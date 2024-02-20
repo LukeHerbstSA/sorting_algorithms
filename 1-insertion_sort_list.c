@@ -22,8 +22,8 @@ void insertion_sort(listint_t **list)
 		while (sublist->prev != NULL && (sublist->n < (sublist->prev)->n))
 		{
 			previous = sublist->prev;
-			previous_prev = previous->prev; /*previous prev may be null*/
-			if (previous_prev != NULL) /*if not null, change nxt to sublist*/
+			previous_prev = previous->prev;
+			if (previous_prev != NULL)
 				previous_prev->next = sublist;
 			holder = sublist->next;
 			sublist->next = previous;
