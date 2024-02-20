@@ -1,10 +1,9 @@
 #include "sort.h"
 
 /**
-	* selection_sort - void func
+	* insertion_sort - void func
 	* Description: sorts list using insertion sort
-	* @array: passed ptr to int array
-	* @size: passed size of array
+	* @list: passed ptr to doubly int list
 	*/
 void insertion_sort(listint_t **list)
 {
@@ -13,7 +12,6 @@ void insertion_sort(listint_t **list)
 	listint_t *sublist = NULL;
 	listint_t *previous_prev = NULL;
 	listint_t *holder = NULL;
-	int i = 0;
 
 	if (listint == NULL)
 		return;
@@ -21,18 +19,18 @@ void insertion_sort(listint_t **list)
 	while (listint != NULL)
 	{
 		sublist = listint;
-		while (sublist->prev != NULL && (sublist->n < (sublist->prev)->n)) /*check if curr n is smaller than prev n*/
+		while (sublist->prev != NULL && (sublist->n < (sublist->prev)->n))
 		{
 			previous = sublist->prev;
-			previous_prev = previous->prev; /*previous prev may be null, which is fine*/
-			if (previous_prev != NULL) /*if not null, change the next ptr to point to listint*/
+			previous_prev = previous->prev; /*previous prev may be null*/
+			if (previous_prev != NULL) /*if not null, change nxt to sublist*/
 				previous_prev->next = sublist;
 			holder = sublist->next;
 			sublist->next = previous;
 			previous->next = holder;
-			sublist->prev = previous_prev; /*its fine if previous_prev is NULL, this is expected in some cases*/
+			sublist->prev = previous_prev;
 			previous->prev = sublist;
-			print_array(list);
+			print_list(*list);
 			sublist = sublist->prev;
 		}
 		listint = listint->next;
