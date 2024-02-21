@@ -5,7 +5,7 @@
 	* Description: sorts list using insertion sort
 	* @list: passed ptr to doubly int list
 	*/
-void insertion_sort(listint_t **list)
+void insertion_sort_list(listint_t **list)
 {
 	listint_t *previous = NULL;
 	listint_t *listint = NULL;
